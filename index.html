@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sekka — سكة | Cairo's Multimodal Transit App</title>
+<meta name="description" content="Sekka plans one trip across Cairo's metro, bus, minibus and microbus together — offline, bilingual, and free.">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8726286335270032"
+     crossorigin="anonymous"></script>
+
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+:root{
+  /* Sekka's real brand tokens — sampled from assets/logo.png and
+     lib/theme/app_colors.dart, not invented for this page. */
+  --sand:#f6f2e7;
+  --sand-2:#ece4ce;
+  --paper:#fbf8ef;
+  --ink:#14231b;
+  --ink-2:#3e5a4c;
+  --navy:#1b382a;      /* brand ground — launchGround, logo.png background */
+  --navy-deep:#0e1f16;
+  --gold:#e5a133;      /* app's own "warning" token, matches the logo's gold */
+  --gold-2:#f0b24a;    /* app's dark-mode warning token */
+  --line1:#1565c0; /* metro line 1 (blue) */
+  --line2:#c62828; /* metro line 2 (red) */
+  --line3:#2e7d32; /* metro line 3 (green) */
+  --rule: rgba(20,35,27,0.14);
+  color-scheme: light;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px);
+  background:var(--sand);
+  color:var(--ink);
+  font-family:'Cairo',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+[hidden]{display:none!important;}
+a{color:inherit;}
+
+/* paper grain texture */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.5;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(20,35,27,.035) 0, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(198,40,40,.04) 0, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(21,101,192,.04) 0, transparent 40%);
+}
+
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px;position:relative;z-index:1;}
+
+/* ---------- nav ---------- */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  padding-top:env(safe-area-inset-top,0px);
+  background:rgba(244,234,212,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-block:14px;
+}
+.wordmark{
+  display:flex;align-items:center;gap:10px;
+  font-weight:800;font-size:1.3rem;letter-spacing:-.01em;
+  text-decoration:none;color:var(--ink);
+}
+.wordmark .dot-en{color:var(--line1)}
+.wordmark img{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.navlinks{display:flex;align-items:center;gap:28px;}
+.navlinks a{
+  text-decoration:none;color:var(--ink-2);font-weight:600;font-size:.95rem;
+  position:relative;padding-block:4px;
+}
+.navlinks a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;
+  background:var(--line1);transform:scaleX(0);transform-origin:right;
+  transition:transform .25s ease;
+}
+.navlinks a:hover::after{transform:scaleX(1);transform-origin:left;}
+.navlinks{margin-inline-start:auto;margin-inline-end:20px;}
+@media (max-width:760px){ .navlinks{display:none;} }
+
+.btn{
+  appearance:none;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:inherit;font-weight:700;font-size:.95rem;
+  text-decoration:none;
+}
+.btn-lang{
+  background:var(--paper);border:1.5px solid var(--rule);
+  border-radius:999px;padding:8px 16px;color:var(--ink);
+  transition:border-color .2s, background .2s;
+}
+.btn-lang:hover{border-color:var(--line1);}
+.btn-ticket{
+  background:var(--navy);color:var(--sand);
+  padding:12px 22px;border-radius:10px;
+  position:relative;
+  box-shadow:0 6px 0 var(--navy-deep), 0 10px 22px rgba(14,31,22,.25);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn-ticket:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--navy-deep), 0 16px 26px rgba(14,31,22,.3);}
+.btn-ticket:active{transform:translateY(2px);box-shadow:0 3px 0 var(--navy-deep);}
+.btn-ticket svg{width:20px;height:20px;flex:none;}
+
+/* ---------- hero ---------- */
+.hero{
+  padding-block:76px 40px;
+  position:relative;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+}
+@media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--line1);background:rgba(21,101,192,.1);
+  border:1px solid rgba(21,101,192,.25);
+  padding:6px 14px;border-radius:999px;margin-bottom:22px;
+}
+.eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--line1);animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(1.4);}}
+
+h1.headline{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(2.4rem, 5.2vw, 4.1rem);
+  line-height:1.04;
+  letter-spacing:-.02em;
+  margin:0 0 22px;
+}
+[dir="rtl"] h1.headline{font-family:'Cairo',sans-serif;font-weight:800;}
+h1.headline em{
+  font-style:italic;color:var(--gold);
+}
+[dir="rtl"] h1.headline em{font-style:normal;color:var(--gold);}
+
+.hero p.sub{
+  font-size:1.15rem;line-height:1.65;color:var(--ink-2);
+  max-width:46ch;margin:0 0 34px;
+}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:38px;}
+.btn-ghost{
+  border:1.5px solid var(--ink); border-radius:10px; padding:12px 22px;
+  color:var(--ink); background:transparent;
+}
+.btn-ghost:hover{background:var(--ink);color:var(--sand);}
+
+.stats{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--rule);padding-top:22px;}
+.stat{padding-inline-end:32px;margin-inline-end:32px;border-inline-end:1px solid var(--rule);}
+.stat:last-child{border-inline-end:none;}
+.stat b{display:block;font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;color:var(--navy);}
+[dir="rtl"] .stat b{font-family:'Cairo',sans-serif;font-weight:800;}
+.stat span{font-size:.82rem;color:var(--ink-2);font-weight:600;}
+
+/* phone showcase */
+.phone-stage{position:relative;display:flex;justify-content:center;align-items:center;padding:20px;}
+.phone{
+  width:min(300px,72vw);aspect-ratio:9/19.5;
+  background:var(--navy-deep);border-radius:42px;padding:12px;
+  box-shadow:0 30px 60px -20px rgba(14,31,22,.5), 0 2px 0 rgba(255,255,255,.06) inset;
+  position:relative;z-index:2;
+  animation:float 5s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-14px) rotate(1deg);}}
+.phone img{border-radius:30px;width:100%;height:100%;object-fit:cover;}
+.badge-icon{
+  position:absolute;z-index:3;top:-18px;inset-inline-start:-26px;
+  width:74px;height:74px;border-radius:20px;overflow:hidden;
+  box-shadow:0 14px 26px rgba(14,31,22,.35);
+  animation:float 5s ease-in-out infinite .4s;
+  border:3px solid var(--paper);
+}
+.ring{
+  position:absolute;width:360px;height:360px;border-radius:50%;
+  border:1.5px dashed rgba(20,35,27,.18);z-index:1;
+}
+
+/* ---------- route divider ---------- */
+.route-divider{padding-block:8px;overflow:hidden;}
+.route-divider svg{width:100%;height:46px;display:block;}
+.route-divider path{
+  stroke:var(--ink);stroke-opacity:.25;stroke-width:2;fill:none;
+  stroke-dasharray:2 10;stroke-linecap:round;
+}
+.route-divider circle{fill:var(--gold);}
+
+/* ---------- section shells ---------- */
+section{padding-block:70px;position:relative;}
+.kicker{
+  font-weight:800;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--line1);margin:0 0 12px;
+}
+h2.h2{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:clamp(1.9rem,3.4vw,2.7rem);letter-spacing:-.01em;margin:0 0 14px;
+}
+[dir="rtl"] h2.h2{font-family:'Cairo',sans-serif;font-weight:800;}
+.section-sub{color:var(--ink-2);font-size:1.05rem;max-width:56ch;margin:0 0 44px;line-height:1.6;}
+
+/* reveal-on-scroll (only when JS has run — no-JS visitors see content immediately) */
+html.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+html.js .reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- features ---------- */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media (max-width:900px){.feature-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.feature-grid{grid-template-columns:1fr;}}
+.feature{
+  background:var(--paper);border:1px solid var(--rule);border-radius:16px;
+  padding:26px 24px;position:relative;overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.feature:hover{transform:translateY(-6px);box-shadow:0 18px 30px -14px rgba(20,35,27,.25);border-color:transparent;}
+.feature .dot{width:12px;height:12px;border-radius:50%;margin-bottom:18px;}
+.feature h3{margin:0 0 8px;font-size:1.12rem;font-weight:800;}
+.feature p{margin:0;color:var(--ink-2);font-size:.94rem;line-height:1.55;}
+.feature .num{
+  position:absolute;top:10px;inset-inline-end:16px;
+  font-family:'Fraunces',serif;font-style:italic;font-size:2.6rem;
+  color:rgba(20,35,27,.06);font-weight:600;
+}
+
+/* ---------- screenshots ---------- */
+.shot-rail{
+  display:flex;gap:22px;overflow-x:auto;padding:10px 4px 26px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.shot-rail::-webkit-scrollbar{height:8px;}
+.shot-rail::-webkit-scrollbar-thumb{background:var(--rule);border-radius:8px;}
+.shot-card{flex:none;scroll-snap-align:start;width:220px;}
+.shot-frame{
+  background:var(--navy-deep);border-radius:28px;padding:9px;
+  box-shadow:0 20px 40px -18px rgba(20,35,27,.35);
+}
+.shot-frame img{border-radius:20px;aspect-ratio:9/19.5;object-fit:cover;}
+.shot-label{margin-top:14px;font-weight:700;font-size:.92rem;text-align:center;color:var(--ink-2);}
+
+/* ---------- disclaimer ---------- */
+.ticket-note{
+  background:var(--paper);border:1.5px dashed rgba(20,35,27,.3);
+  border-radius:14px;padding:26px 28px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.ticket-note svg{flex:none;width:26px;height:26px;color:var(--line1);margin-top:2px;}
+.ticket-note p{margin:0;color:var(--ink-2);font-size:.92rem;line-height:1.65;}
+.ticket-note strong{color:var(--ink);}
+
+/* ---------- download cta ---------- */
+.cta-band{
+  background:var(--navy);color:var(--sand);border-radius:28px;
+  padding:56px 40px;text-align:center;position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(223,162,46,.18), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(28,110,140,.25), transparent 45%);
+}
+.cta-band > *{position:relative;z-index:1;}
+.cta-band h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 12px;}
+[dir="rtl"] .cta-band h2{font-family:'Cairo',sans-serif;font-weight:800;}
+.cta-band p{color:rgba(244,234,212,.75);margin:0 0 30px;font-size:1.05rem;}
+.btn-gold{
+  background:var(--gold-2);color:var(--navy-deep);
+  padding:14px 28px;border-radius:10px;font-size:1rem;
+  box-shadow:0 8px 0 #b9832a;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 0 #b9832a;}
+.btn-gold:active{transform:translateY(3px);box-shadow:0 3px 0 #b9832a;}
+
+/* ---------- footer ---------- */
+footer{padding-block:50px 40px;border-top:1px solid var(--rule);margin-top:20px;}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap;}
+.foot-links a{text-decoration:none;font-weight:600;color:var(--ink-2);}
+.foot-links a:hover{color:var(--line1);}
+.foot-meta{color:var(--ink-2);font-size:.85rem;}
+.foot-meta div{margin-bottom:4px;}
+
+/* rtl flips for directional bits */
+[dir="rtl"] .ring{transform:scaleX(-1);}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="wordmark">
+      <img src="assets/icon.png" alt="Sekka">
+      <span data-i18n="brand">Sekka</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#features" data-i18n="nav1">Features</a>
+      <a href="#screens" data-i18n="nav2">Screens</a>
+      <a href="#download" data-i18n="nav3">Download</a>
+      <a href="https://eliaamir.github.io/sekka-privacy/" data-i18n="nav4">Privacy</a>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button class="btn btn-lang" id="langToggle" type="button">عربي</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">Cairo's Transit App</span></span>
+        <h1 class="headline" data-i18n-html="headline_html">One trip. <em>Every</em> way to get there.</h1>
+        <p class="sub" data-i18n="hero_sub">Metro, bus, minibus, and microbus — planned together, not app by app. Sekka finds the route no single line covers, even offline.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-ticket" href="https://play.google.com/store/apps/details?id=com.sekka.transport" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.3c-.3.3-.5.7-.5 1.2v17c0 .5.2.9.5 1.2l.1.1L13.9 12 3.7 2.2l-.1.1Zm12.6 11-2.6-2.6L4.1 21.3l9.5-5.3c.6-.4 1.6-1 2.6-2.7Zm3.3-1.9-2.9-1.7-2.9 2.9 2.9 2.9 2.9-1.7c.9-.5.9-1.9 0-2.4ZM4.1 2.7l9.5 9.3 2.6-2.6C15.2 7.7 5.9 3.2 4.1 2.7Z"/></svg>
+            <span data-i18n="cta_play">Get it on Google Play</span>
+          </a>
+          <a class="btn btn-ghost" href="#screens" data-i18n="cta_see">See it in action</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b dir="ltr">10,000+</b><span data-i18n="stat1">downloads</span></div>
+          <div class="stat"><b dir="ltr">4.9★</b><span data-i18n="stat2">store rating</span></div>
+          <div class="stat"><b dir="ltr">3-in-1</b><span data-i18n="stat3">modes unified</span></div>
+          <div class="stat"><b data-i18n="stat4b">Offline</b><span data-i18n="stat4">works anywhere</span></div>
+        </div>
+      </div>
+      <div class="phone-stage">
+        <div class="ring"></div>
+        <div class="phone"><img src="assets/screenshots/s1.png" alt="Sekka app screenshot"></div>
+        <div class="badge-icon"><img src="assets/icon.png" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="route-divider"><svg viewBox="0 0 1200 46" preserveAspectRatio="none">
+    <path d="M0 23 H1200"/>
+    <circle cx="120" cy="23" r="5"></circle>
+    <circle cx="480" cy="23" r="5"></circle>
+    <circle cx="840" cy="23" r="5"></circle>
+    <circle cx="1150" cy="23" r="5"></circle>
+  </svg></div>
+
+  <section id="features">
+    <div class="wrap">
+      <p class="kicker reveal" data-i18n="feat_kicker">Why Sekka</p>
+      <h2 class="h2 reveal" data-i18n="feat_title">Built for how Cairo actually moves</h2>
+      <p class="section-sub reveal" data-i18n="feat_sub">No line covers this city alone — so Sekka doesn't plan like it does.</p>
+      <div class="feature-grid">
+        <div class="feature reveal">
+          <span class="num">01</span>
+          <span class="dot" style="background:var(--line1)"></span>
+          <h3 data-i18n="f1_t">Combined routing</h3>
+          <p data-i18n="f1_p">One trip can span different modes, reaching places no single line serves.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="num">02</span>
+          <span class="dot" style="background:var(--line2)"></span>
+          <h3 data-i18n="f2_t">Works offline</h3>
+          <p data-i18n="f2_p">Routing data and the Cairo map are bundled right on your device.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="num">03</span>
+          <span class="dot" style="background:var(--line3)"></span>
+          <h3 data-i18n="f3_t">Metro fare estimates</h3>
+          <p data-i18n="f3_p">Zone-based fare estimates, so you don't count stations every time.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="num">04</span>
+          <span class="dot" style="background:var(--gold)"></span>
+          <h3 data-i18n="f4_t">Fully bilingual</h3>
+          <p data-i18n="f4_p">Switch Arabic and English for the interface and station names, independently.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="num">05</span>
+          <span class="dot" style="background:var(--line1)"></span>
+          <h3 data-i18n="f5_t">Route browser</h3>
+          <p data-i18n="f5_p">Search any line by number or destination, with bilingual stop names.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="num">06</span>
+          <span class="dot" style="background:var(--line2)"></span>
+          <h3 data-i18n="f6_t">Flexible starting points</h3>
+          <p data-i18n="f6_p">Search, drop a pin, use GPS, or paste a Google Maps link.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="route-divider"><svg viewBox="0 0 1200 46" preserveAspectRatio="none">
+    <path d="M0 23 H1200"/>
+    <circle cx="200" cy="23" r="5"></circle>
+    <circle cx="600" cy="23" r="5"></circle>
+    <circle cx="1000" cy="23" r="5"></circle>
+  </svg></div>
+
+  <section id="screens">
+    <div class="wrap">
+      <p class="kicker reveal" data-i18n="shots_kicker">A look inside</p>
+      <h2 class="h2 reveal" data-i18n="shots_title">Every screen, planned like a route map</h2>
+      <p class="section-sub reveal" data-i18n="shots_sub">From first search to boarding — five screens, one trip.</p>
+      <div class="shot-rail">
+        <div class="shot-card reveal">
+          <div class="shot-frame"><img src="assets/screenshots/s1.png" alt="Route planner"></div>
+          <p class="shot-label" data-i18n="shot1">Route Planner</p>
+        </div>
+        <div class="shot-card reveal">
+          <div class="shot-frame"><img src="assets/screenshots/s2.png" alt="Multimodal trip"></div>
+          <p class="shot-label" data-i18n="shot2">Multimodal Trip</p>
+        </div>
+        <div class="shot-card reveal">
+          <div class="shot-frame"><img src="assets/screenshots/s3.png" alt="Metro navigator"></div>
+          <p class="shot-label" data-i18n="shot3">Metro Navigator</p>
+        </div>
+        <div class="shot-card reveal">
+          <div class="shot-frame"><img src="assets/screenshots/s4.png" alt="Route browser"></div>
+          <p class="shot-label" data-i18n="shot4">Route Browser</p>
+        </div>
+        <div class="shot-card reveal">
+          <div class="shot-frame"><img src="assets/screenshots/s5.png" alt="Offline map"></div>
+          <p class="shot-label" data-i18n="shot5">Offline Map</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="ticket-note reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        <p data-i18n-html="disclaimer"><strong>Sekka is an independent app</strong> — not affiliated with or endorsed by the Egyptian government, the Metro authority, or any public transit operator. Microbus and route data is community-documented and unofficial. Fares, routes, and times are estimates and subject to change — confirm with the driver or operator.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2 data-i18n="cta_h">Get moving with Sekka</h2>
+        <p data-i18n="cta_p">Free to download. No account required to start planning.</p>
+        <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.sekka.transport" target="_blank" rel="noopener">
+          <span data-i18n="cta_play">Get it on Google Play</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="wordmark" style="font-size:1.1rem;">
+      <img src="assets/icon.png" alt="Sekka" style="width:28px;height:28px;">
+      <span data-i18n="brand">Sekka</span>
+    </div>
+    <div class="foot-links">
+      <a href="#features" data-i18n="nav1">Features</a>
+      <a href="#screens" data-i18n="nav2">Screens</a>
+      <a href="https://eliaamir.github.io/sekka-privacy/" data-i18n="nav4">Privacy</a>
+      <a href="mailto:contact@sekka-eg.com">contact@sekka-eg.com</a>
+    </div>
+  </div>
+  <div class="wrap foot-meta" style="margin-top:24px;">
+    <div data-i18n="foot1">© 2026 Sekka. Built in Cairo.</div>
+    <div data-i18n="foot2">Sekka is an independent, community-documented transit app and is not affiliated with any government or transit authority.</div>
+  </div>
+</footer>
+
+<script>
+const STR = {
+  en: {
+    brand:"Sekka", nav1:"Features", nav2:"Screens", nav3:"Download", nav4:"Privacy",
+    eyebrow:"Cairo's Transit App",
+    hero_sub:"Metro, bus, minibus, and microbus — planned together, not app by app. Sekka finds the route no single line covers, even offline.",
+    cta_play:"Get it on Google Play", cta_see:"See it in action",
+    stat1:"downloads", stat2:"store rating", stat3:"modes unified", stat4:"works anywhere", stat4b:"Offline",
+    feat_kicker:"Why Sekka", feat_title:"Built for how Cairo actually moves",
+    feat_sub:"No line covers this city alone — so Sekka doesn't plan like it does.",
+    f1_t:"Combined routing", f1_p:"One trip can span different modes, reaching places no single line serves.",
+    f2_t:"Works offline", f2_p:"Routing data and the Cairo map are bundled right on your device.",
+    f3_t:"Metro fare estimates", f3_p:"Zone-based fare estimates, so you don't count stations every time.",
+    f4_t:"Fully bilingual", f4_p:"Switch Arabic and English for the interface and station names, independently.",
+    f5_t:"Route browser", f5_p:"Search any line by number or destination, with bilingual stop names.",
+    f6_t:"Flexible starting points", f6_p:"Search, drop a pin, use GPS, or paste a Google Maps link.",
+    shots_kicker:"A look inside", shots_title:"Every screen, planned like a route map",
+    shots_sub:"From first search to boarding — five screens, one trip.",
+    shot1:"Route Planner", shot2:"Multimodal Trip", shot3:"Metro Navigator", shot4:"Route Browser", shot5:"Offline Map",
+    disclaimer:"<strong>Sekka is an independent app</strong> — not affiliated with or endorsed by the Egyptian government, the Metro authority, or any public transit operator. Microbus and route data is community-documented and unofficial. Fares, routes, and times are estimates and subject to change — confirm with the driver or operator.",
+    cta_h:"Get moving with Sekka", cta_p:"Free to download. No account required to start planning.",
+    foot1:"© 2026 Sekka. Built in Cairo.",
+    foot2:"Sekka is an independent, community-documented transit app and is not affiliated with any government or transit authority.",
+    headline_html:'One trip. <em>Every</em> way to get there.'
+  },
+  ar: {
+    brand:"سكة", nav1:"المميزات", nav2:"لقطات الشاشة", nav3:"تحميل", nav4:"الخصوصية",
+    eyebrow:"تطبيق مواصلات القاهرة",
+    hero_sub:"المترو والأتوبيس والميني باص والميكروباص، كلهم بيتخططوا مع بعض مش تطبيق لوحده. سكة بيلاقي رحلة محدش بيوصلها بخط واحد، حتى من غير إنترنت.",
+    cta_play:"حمّل من Google Play", cta_see:"شوف التطبيق شغال",
+    stat1:"تحميل", stat2:"تقييم المتجر", stat3:"وسايل في رحلة واحدة", stat4:"شغال في أي مكان", stat4b:"أوفلاين",
+    feat_kicker:"ليه سكة", feat_title:"اتبنى على طبيعة تنقل القاهرة",
+    feat_sub:"مفيش خط بيوصل المدينة لوحده — فسكة مش بيخطط كأنه بيوصلها.",
+    f1_t:"تخطيط مشترك", f1_p:"رحلة واحدة بتمشي فيها على أكتر من وسيلة، فتوصلك أماكن مفيش خط واحد بيوصلها.",
+    f2_t:"شغال أوفلاين", f2_p:"بيانات التخطيط وخريطة القاهرة كلها محفوظة على موبايلك.",
+    f3_t:"تقدير سعر المترو", f3_p:"تقدير السعر بالمنطقة، بدل ما تحسب كل مرة عدد المحطات.",
+    f4_t:"عربي وإنجليزي بالكامل", f4_p:"بدّل اللغة للواجهة ولأسماء المحطات، كل واحدة لوحدها.",
+    f5_t:"متصفح الخطوط", f5_p:"دوّر على أي خط بالرقم أو بالوجهة، بأسماء محطات عربي وإنجليزي.",
+    f6_t:"نقط بداية مرنة", f6_p:"بالبحث، أو دبوس على الخريطة، أو GPS، أو لينك من خرائط جوجل.",
+    shots_kicker:"جولة جوه التطبيق", shots_title:"كل شاشة متخططة زي خريطة خط",
+    shots_sub:"من أول بحث لحد الركوب — خمس شاشات، رحلة واحدة.",
+    shot1:"مخطط الرحلات", shot2:"رحلة متعددة الوسايل", shot3:"ملاح المترو", shot4:"متصفح الخطوط", shot5:"خريطة أوفلاين",
+    disclaimer:"<strong>سكة تطبيق مستقل</strong>، وغير تابع للحكومة المصرية أو مترو الأنفاق أو هيئة النقل العام أو أي جهة حكومية، وغير معتمد منها. بيانات الميكروباص والخطوط موثّقة من المستخدمين وغير رسمية. الأسعار والخطوط والمواعيد تقريبية وقابلة للتغيير — اتأكد من السواق أو الجهة المشغّلة.",
+    cta_h:"يلا نتحرك مع سكة", cta_p:"التحميل مجاني. مش محتاج حساب عشان تبدأ تخطط.",
+    foot1:"© 2026 سكة. اتصنع في القاهرة.",
+    foot2:"سكة تطبيق مستقل، بيانات موثّقة من المستخدمين، وغير تابع لأي جهة حكومية أو هيئة نقل.",
+    headline_html:'رحلة واحدة… بكل الطرق اللي <em>توصلك</em>'
+  }
+};
+
+let lang = 'en';
+const toggleBtn = document.getElementById('langToggle');
+
+function applyLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+  const dict = STR[l];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-html');
+    if(dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  toggleBtn.textContent = l === 'ar' ? 'English' : 'عربي';
+  try{ localStorage.setItem('sekka-lang', l); }catch(e){}
+}
+
+toggleBtn.addEventListener('click', ()=> applyLang(lang === 'ar' ? 'en' : 'ar'));
+
+let initial = 'en';
+try{
+  const saved = localStorage.getItem('sekka-lang');
+  if(saved) initial = saved;
+  else if(navigator.language && navigator.language.toLowerCase().startsWith('ar')) initial = 'ar';
+}catch(e){
+  if(navigator.language && navigator.language.toLowerCase().startsWith('ar')) initial = 'ar';
+}
+applyLang(initial);
+
+// scroll reveal — plain rect check on scroll/resize, throttled with rAF.
+// (More robust than relying solely on IntersectionObserver root-margin edge
+// cases across browsers; guarantees nothing stays permanently invisible.)
+let revealEls = Array.from(document.querySelectorAll('.reveal'));
+let ticking = false;
+function revealPass(){
+  const vh = window.innerHeight;
+  revealEls = revealEls.filter(el=>{
+    const r = el.getBoundingClientRect();
+    if(r.top < vh * 1.15){
+      el.classList.add('in');
+      return false; // done, drop from the watch list
+    }
+    return true;
+  });
+  ticking = false;
+  if(revealEls.length === 0){
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onScroll);
+  }
+}
+function onScroll(){
+  if(!ticking){ ticking = true; requestAnimationFrame(revealPass); }
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', onScroll);
+revealPass(); // reveal whatever's already in view on load
+if(document.fonts && document.fonts.ready){ document.fonts.ready.then(revealPass); } // re-check after web fonts swap in (layout can shift)
+window.addEventListener('load', revealPass);
+// Safety net: whatever the cause (a layout race, a browser quirk), nothing
+// should stay invisible forever — force everything visible after a beat.
+setTimeout(()=>{ revealEls.forEach(el=>el.classList.add('in')); revealEls = []; }, 2200);
+</script>
+
+</body>
+</html>
