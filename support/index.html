@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sekka — سكة | Support</title>
+<meta name="description" content="تواصل مع فريق سكة أو بلّغ عن مشكلة. Get help with Sekka or report a problem.">
+<link rel="canonical" href="https://sekka-eg.com/support/">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --sand:#f6f2e7;
+  --sand-2:#ece4ce;
+  --paper:#fbf8ef;
+  --ink:#14231b;
+  --ink-2:#3e5a4c;
+  --navy:#1b382a;
+  --navy-deep:#0e1f16;
+  --gold:#e5a133;
+  --gold-2:#f0b24a;
+  --line1:#1565c0;
+  --line2:#c62828;
+  --line3:#2e7d32;
+  --rule: rgba(20,35,27,0.14);
+  color-scheme: light;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px);
+  background:var(--sand);
+  color:var(--ink);
+  font-family:'Cairo',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+[hidden]{display:none!important;}
+a{color:inherit;}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px;position:relative;z-index:1;}
+.wrap-narrow{max-width:44rem;margin-inline:auto;padding-inline:24px;}
+
+/* ---------- nav (matches landing page) ---------- */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  padding-top:env(safe-area-inset-top,0px);
+  background:rgba(244,234,212,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding-block:14px;}
+.wordmark{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.3rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+.wordmark img{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.navlinks{display:flex;align-items:center;gap:24px;margin-inline-start:auto;margin-inline-end:20px;}
+.navlinks a{text-decoration:none;color:var(--ink-2);font-weight:600;font-size:.95rem;}
+.navlinks a:hover{color:var(--line1);}
+@media (max-width:640px){ .navlinks{display:none;} }
+.btn-lang{
+  appearance:none;border:1.5px solid var(--rule);cursor:pointer;
+  font-family:inherit;font-weight:700;font-size:.9rem;
+  background:var(--paper);border-radius:999px;padding:8px 16px;color:var(--ink);
+  transition:border-color .2s;
+}
+.btn-lang:hover{border-color:var(--line1);}
+
+/* ---------- content ---------- */
+header.page-head{padding:3rem 0 1rem}
+.rails{display:flex;gap:4px;margin-bottom:2rem}
+.rails i{height:5px;flex:1;border-radius:3px;display:block}
+.rails i:nth-child(1){background:var(--line1)}
+.rails i:nth-child(2){background:var(--gold)}
+.rails i:nth-child(3){background:var(--line3)}
+h1.brand{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;margin:0 0 .5rem;letter-spacing:-.01em}
+[dir="rtl"] h1.brand{font-family:'Cairo',sans-serif;font-weight:800;}
+.sub{margin:0 0 2rem;color:var(--ink-2);font-size:1.08rem;line-height:1.65;max-width:46ch}
+
+.card-grid{display:grid;grid-template-columns:1fr;gap:16px;padding-bottom:3.5rem;}
+.card{
+  background:var(--paper);border:1px solid var(--rule);border-radius:16px;
+  padding:24px;display:flex;gap:16px;align-items:flex-start;
+}
+.card .ico{
+  flex:none;width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--navy);color:var(--sand);
+}
+.card .ico svg{width:22px;height:22px;}
+.card h2{margin:0 0 6px;font-size:1.05rem;font-weight:800;}
+.card p{margin:0 0 10px;color:var(--ink-2);font-size:.96rem;line-height:1.6;}
+.card a.link-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:700;font-size:.92rem;color:var(--line1);text-decoration:none;
+}
+.card a.link-btn:hover{text-decoration:underline;}
+
+footer{padding-block:40px 40px;border-top:1px solid var(--rule);margin-top:20px;}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap;}
+.foot-links a{text-decoration:none;font-weight:600;color:var(--ink-2);}
+.foot-links a:hover{color:var(--line1);}
+</style>
+</head>
+<body dir="rtl">
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="../" class="wordmark">
+      <img src="../assets/icon.png" alt="Sekka">
+      <span id="nav-brand">سكة</span>
+    </a>
+    <nav class="navlinks">
+      <a href="../" id="nav-home">الرئيسية</a>
+      <a href="../privacy/" id="nav-privacy">الخصوصية</a>
+    </nav>
+    <button class="btn-lang" type="button" id="btn-lang-top">English</button>
+  </div>
+</header>
+
+<div class="wrap-narrow">
+<header class="page-head">
+  <div class="rails" aria-hidden="true"><i></i><i></i><i></i></div>
+  <h1 class="brand" id="title">الدعم</h1>
+  <p class="sub" id="intro">محتاج مساعدة في سكة، أو لقيت حاجة مش شغالة صح؟ احنا هنا.</p>
+</header>
+
+<div class="card-grid">
+  <div class="card">
+    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9 6 9-6M3 6h18v12H3V6z"/></svg></div>
+    <div>
+      <h2 id="c1-h">راسلنا على الإيميل</h2>
+      <p id="c1-p">لأي سؤال أو مشكلة أو اقتراح، ابعتلنا إيميل وهنرد عليك.</p>
+      <a class="link-btn" href="mailto:contact@sekka-eg.com">contact@sekka-eg.com</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+    <div>
+      <h2 id="c2-h">بلّغ من جوه التطبيق</h2>
+      <p id="c2-p">تقدر كمان تبلّغ عن أي مشكلة — محطة غلط، خط ناقص، سعر مش مظبوط — من جوه سكة نفسه، من أي زرار بلاغ بتلاقيه وانت بتستخدم التطبيق.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z M3 12c1.8-4.5 5.5-7 9-7s7.2 2.5 9 7c-1.8 4.5-5.5 7-9 7s-7.2-2.5-9-7Z"/></svg></div>
+    <div>
+      <h2 id="c3-h">عايز تعرف بياناتك بتتستخدم إزاي؟</h2>
+      <p id="c3-p">اقرأ سياسة الخصوصية بتاعة سكة — بنشرح فيها كل حاجة بنجمعها وليه.</p>
+      <a class="link-btn" href="../privacy/" id="c3-link">سياسة الخصوصية ←</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.3c-.3.3-.5.7-.5 1.2v17c0 .5.2.9.5 1.2l.1.1L13.9 12 3.7 2.2l-.1.1Zm12.6 11-2.6-2.6L4.1 21.3l9.5-5.3c.6-.4 1.6-1 2.6-2.7Zm3.3-1.9-2.9-1.7-2.9 2.9 2.9 2.9 2.9-1.7c.9-.5.9-1.9 0-2.4ZM4.1 2.7l9.5 9.3 2.6-2.6C15.2 7.7 5.9 3.2 4.1 2.7Z"/></svg></div>
+    <div>
+      <h2 id="c4-h">لسه مش محمّل سكة؟</h2>
+      <p id="c4-p">حمّله من Google Play، وابدأ تخطط رحلتك.</p>
+      <a class="link-btn" href="https://play.google.com/store/apps/details?id=com.sekka.transport" target="_blank" rel="noopener" id="c4-link">Google Play ←</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="wordmark" style="font-size:1.1rem;">
+      <img src="../assets/icon.png" alt="Sekka" style="width:28px;height:28px;">
+      <span id="foot-brand">سكة</span>
+    </div>
+    <div class="foot-links">
+      <a href="../" id="foot-home">الرئيسية</a>
+      <a href="../privacy/" id="foot-privacy">الخصوصية</a>
+      <a href="mailto:contact@sekka-eg.com">contact@sekka-eg.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var html=document.documentElement, body=document.body;
+  var btnTop=document.getElementById('btn-lang-top');
+  var els={
+    navBrand:document.getElementById('nav-brand'), navHome:document.getElementById('nav-home'), navPrivacy:document.getElementById('nav-privacy'),
+    title:document.getElementById('title'), intro:document.getElementById('intro'),
+    c1h:document.getElementById('c1-h'), c1p:document.getElementById('c1-p'),
+    c2h:document.getElementById('c2-h'), c2p:document.getElementById('c2-p'),
+    c3h:document.getElementById('c3-h'), c3p:document.getElementById('c3-p'), c3link:document.getElementById('c3-link'),
+    c4h:document.getElementById('c4-h'), c4p:document.getElementById('c4-p'), c4link:document.getElementById('c4-link'),
+    footBrand:document.getElementById('foot-brand'), footHome:document.getElementById('foot-home'), footPrivacy:document.getElementById('foot-privacy')
+  };
+  var t={
+    ar:{dir:'rtl',lang:'ar',navBrand:'سكة',navHome:'الرئيسية',navPrivacy:'الخصوصية',
+        title:'الدعم',intro:'محتاج مساعدة في سكة، أو لقيت حاجة مش شغالة صح؟ احنا هنا.',
+        c1h:'راسلنا على الإيميل',c1p:'لأي سؤال أو مشكلة أو اقتراح، ابعتلنا إيميل وهنرد عليك.',
+        c2h:'بلّغ من جوه التطبيق',c2p:'تقدر كمان تبلّغ عن أي مشكلة — محطة غلط، خط ناقص، سعر مش مظبوط — من جوه سكة نفسه، من أي زرار بلاغ بتلاقيه وانت بتستخدم التطبيق.',
+        c3h:'عايز تعرف بياناتك بتتستخدم إزاي؟',c3p:'اقرأ سياسة الخصوصية بتاعة سكة — بنشرح فيها كل حاجة بنجمعها وليه.',c3link:'سياسة الخصوصية ←',
+        c4h:'لسه مش محمّل سكة؟',c4p:'حمّله من Google Play، وابدأ تخطط رحلتك.',c4link:'Google Play ←',
+        footBrand:'سكة',footHome:'الرئيسية',footPrivacy:'الخصوصية',btnLabel:'English'},
+    en:{dir:'ltr',lang:'en',navBrand:'Sekka',navHome:'Home',navPrivacy:'Privacy',
+        title:'Support',intro:"Need help with Sekka, or found something that isn't working right? We're here.",
+        c1h:'Email us',c1p:"For any question, problem, or suggestion — send us an email and we'll reply.",
+        c2h:'Report it from inside the app',c2p:'You can also report a problem — a wrong stop, a missing route, an off fare — right from inside Sekka, using any report button you come across while using the app.',
+        c3h:'Wondering how your data is used?',c3p:"Read Sekka's privacy policy — it explains everything we collect and why.",c3link:'Privacy Policy →',
+        c4h:"Haven't downloaded Sekka yet?",c4p:'Get it on Google Play and start planning your trip.',c4link:'Google Play →',
+        footBrand:'Sekka',footHome:'Home',footPrivacy:'Privacy',btnLabel:'عربي'}
+  };
+  function show(l){
+    var c=t[l];
+    html.lang=c.lang; body.dir=c.dir;
+    els.navBrand.textContent=c.navBrand; els.navHome.textContent=c.navHome; els.navPrivacy.textContent=c.navPrivacy;
+    els.title.textContent=c.title; els.intro.textContent=c.intro;
+    els.c1h.textContent=c.c1h; els.c1p.textContent=c.c1p;
+    els.c2h.textContent=c.c2h; els.c2p.textContent=c.c2p;
+    els.c3h.textContent=c.c3h; els.c3p.textContent=c.c3p; els.c3link.textContent=c.c3link;
+    els.c4h.textContent=c.c4h; els.c4p.textContent=c.c4p; els.c4link.textContent=c.c4link;
+    els.footBrand.textContent=c.footBrand; els.footHome.textContent=c.footHome; els.footPrivacy.textContent=c.footPrivacy;
+    btnTop.textContent=c.btnLabel;
+    try{ localStorage.setItem('sekka-lang', l); }catch(e){}
+  }
+  btnTop.addEventListener('click',function(){show(html.lang==='ar' ? 'en' : 'ar')});
+  var initial='ar';
+  try{
+    var saved=localStorage.getItem('sekka-lang');
+    if(saved) initial=saved;
+    else if((navigator.language||'').slice(0,2)!=='ar') initial='en';
+  }catch(e){
+    if((navigator.language||'').slice(0,2)!=='ar') initial='en';
+  }
+  show(initial);
+})();
+</script>
+</body>
+</html>
