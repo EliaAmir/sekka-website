@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sekka — سكة | Privacy Policy</title>
+<meta name="description" content="سياسة الخصوصية لتطبيق سكة للمواصلات العامة في القاهرة. Privacy policy for Sekka, the Cairo public transport app.">
+<link rel="canonical" href="https://sekka-eg.com/privacy/">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+:root{
+  --sand:#f6f2e7;
+  --sand-2:#ece4ce;
+  --paper:#fbf8ef;
+  --ink:#14231b;
+  --ink-2:#3e5a4c;
+  --navy:#1b382a;
+  --navy-deep:#0e1f16;
+  --gold:#e5a133;
+  --gold-2:#f0b24a;
+  --line1:#1565c0;
+  --line2:#c62828;
+  --line3:#2e7d32;
+  --rule: rgba(20,35,27,0.14);
+  color-scheme: light;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px);
+  background:var(--sand);
+  color:var(--ink);
+  font-family:'Cairo',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  font-size:17px;line-height:1.75;
+  overflow-x:hidden;
+}
+body[dir="ltr"]{font-family:'Cairo',system-ui,sans-serif}
+[hidden]{display:none!important;}
+a{color:var(--line1);}
+.wrap{max-width:44rem;margin-inline:auto;padding-inline:24px;position:relative;z-index:1;}
+
+/* ---------- nav (matches landing page) ---------- */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  padding-top:env(safe-area-inset-top,0px);
+  background:rgba(244,234,212,.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-inner{
+  max-width:1120px;margin-inline:auto;padding-inline:24px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding-block:14px;
+}
+.wordmark{
+  display:flex;align-items:center;gap:10px;
+  font-weight:800;font-size:1.3rem;letter-spacing:-.01em;
+  text-decoration:none;color:var(--ink);
+}
+.wordmark img{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.navlinks{display:flex;align-items:center;gap:24px;margin-inline-start:auto;margin-inline-end:20px;}
+.navlinks a{text-decoration:none;color:var(--ink-2);font-weight:600;font-size:.95rem;}
+.navlinks a:hover{color:var(--line1);}
+@media (max-width:640px){ .navlinks{display:none;} }
+.btn-lang{
+  appearance:none;border:1.5px solid var(--rule);cursor:pointer;
+  font-family:inherit;font-weight:700;font-size:.9rem;
+  background:var(--paper);border-radius:999px;padding:8px 16px;color:var(--ink);
+  transition:border-color .2s;
+}
+.btn-lang:hover{border-color:var(--line1);}
+
+/* ---------- policy content ---------- */
+.sync-note{
+  margin-top:1.4rem;font-size:.86rem;color:var(--ink-2);
+  background:var(--paper);border:1px solid var(--rule);border-radius:8px;
+  padding:.7rem 1rem;
+}
+header.page-head{padding:3rem 0 1.6rem}
+.rails{display:flex;gap:4px;margin-bottom:2rem}
+.rails i{height:5px;flex:1;border-radius:3px;display:block}
+.rails i:nth-child(1){background:var(--line1)}
+.rails i:nth-child(2){background:var(--gold)}
+.rails i:nth-child(3){background:var(--line3)}
+.brand{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;margin:0 0 .35rem;letter-spacing:-.01em}
+[dir="rtl"] .brand{font-family:'Cairo',sans-serif;font-weight:800;}
+.sub{margin:0;color:var(--ink-2);font-size:1.02rem}
+.meta{margin-top:1.5rem;font-size:.9rem;color:var(--ink-2)}
+.toggle{margin-top:1.6rem;display:flex;gap:.5rem}
+.toggle button{
+  font:inherit;font-size:.9rem;font-weight:700;cursor:pointer;
+  padding:.45rem 1rem;border-radius:999px;
+  border:1.5px solid var(--rule);background:var(--paper);color:var(--ink-2);
+}
+.toggle button[aria-pressed="true"]{background:var(--navy);color:var(--sand);border-color:var(--navy)}
+.toggle button:focus-visible{outline:2px solid var(--line3);outline-offset:2px}
+main{padding-block:1rem 4rem}
+h2{font-size:1.05rem;font-weight:800;margin:3rem 0 .9rem;padding-top:1.4rem;border-top:1px solid var(--rule)}
+h3{font-size:1rem;font-weight:700;margin:1.9rem 0 .5rem}
+p{margin:0 0 1rem}
+ul{margin:0 0 1rem;padding-inline-start:1.3rem}
+li{margin-bottom:.5rem}
+strong{font-weight:700}
+.note{
+  border-inline-start:3px solid var(--gold);
+  padding:.85rem 1.1rem;background:var(--paper);border-radius:0 8px 8px 0;
+  font-size:.96rem;margin:1.4rem 0;
+}
+body[dir="ltr"] .note{border-radius:8px 0 0 8px}
+footer{padding-block:40px 40px;border-top:1px solid var(--rule);margin-top:20px;}
+.foot-grid{max-width:1120px;margin-inline:auto;padding-inline:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap;}
+.foot-links a{text-decoration:none;font-weight:600;color:var(--ink-2);}
+.foot-links a:hover{color:var(--line1);}
+.foot-meta{max-width:1120px;margin-inline:auto;padding-inline:24px;color:var(--ink-2);font-size:.85rem;margin-top:24px;}
+@media (max-width:480px){body{font-size:16px}.brand{font-size:1.6rem}header.page-head{padding-top:2rem}}
+</style>
+</head>
+<body dir="rtl">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../" class="wordmark">
+      <img src="../assets/icon.png" alt="Sekka">
+      <span id="nav-brand">سكة</span>
+    </a>
+    <nav class="navlinks">
+      <a href="../" id="nav-home">الرئيسية</a>
+      <a href="../support/" id="nav-support">الدعم</a>
+    </nav>
+    <button class="btn-lang" type="button" id="btn-lang-top">English</button>
+  </div>
+</header>
+
+<div class="wrap">
+<header class="page-head">
+  <div class="rails" aria-hidden="true"><i></i><i></i><i></i></div>
+  <h1 class="brand" id="brand">سكة — سياسة الخصوصية</h1>
+  <p class="sub" id="subtitle">تطبيق المواصلات العامة في القاهرة</p>
+  <p class="meta" id="meta">آخر تحديث: ٢٢ سبتمبر ٢٠٢٦</p>
+  <div class="toggle">
+    <button type="button" id="btn-ar" aria-pressed="true">العربية</button>
+    <button type="button" id="btn-en" aria-pressed="false">English</button>
+  </div>
+</header>
+
+<main id="ar">
+  <p>سكة تطبيق يساعدك على التنقل بالمواصلات العامة في القاهرة. هذه الصفحة تشرح البيانات التي يجمعها التطبيق، ولماذا، ومع مَن تتم مشاركتها.</p>
+  <p>لا يتطلب سكة إنشاء حساب، ولا نطلب اسمك أو بريدك الإلكتروني أو رقم هاتفك.</p>
+
+  <h2>معرّف الجهاز</h2>
+  <p>في أول مرة يرسل فيها التطبيق أي شيء — بحث ومفتاح «ساعدنا نحسّن سكة» مفعّل، أو بلاغ ترسله بنفسك — ينشئ التطبيق رقمًا عشوائيًا (UUID) يُحفظ على جهازك ويُرسل مع كل ما يُرسل بعد ذلك، لتمييز ما يأتي من الجهاز نفسه. لا يُنشأ هذا الرقم قبل ذلك أبدًا: جهاز لم يرسل شيئًا لا يحمل رقمًا. هذا الرقم لا يرتبط بك شخصيًا ولا يمكننا استخدامه للتعرف على هويتك.</p>
+  <p>يمكنك رؤية هذا الرقم داخل التطبيق في «الملف» ← «عن سكة»، والضغط عليه لنسخه. لإعادة تعيينه، امسح بيانات التطبيق من إعدادات جهازك — سيُنشأ رقم جديد في المرة التالية التي يرسل فيها التطبيق شيئًا. يؤدي حذف التطبيق وإعادة تثبيته إلى إنشاء معرّف جديد. وقد ينتقل المعرّف نفسه إذا استعدت هاتفك بالكامل من نسخة احتياطية، أو نقلت بياناتك إلى هاتف جديد باستخدام أداة نقل مباشر بين الأجهزة.</p>
+
+  <h2>الموقع الجغرافي</h2>
+  <p>إذا سمحت للتطبيق باستخدام موقعك، يُستخدم على جهازك لتحديد أقرب محطة كنقطة بداية. الموقع اختياري — يمكنك بدلًا منه البحث عن محطة أو تحديدها على الخريطة.</p>
+  <p>يصل موقعك إلى جهات خارجية في هذه الحالات:</p>
+  <ul>
+    <li><strong>عند تصحيح موقع محطة:</strong> النقطة التي تحددها على الخريطة تُرسل إلينا. الخريطة تبدأ من موقعك الحالي إن كنت قد سمحت بذلك، فإن لم تحرّكها فالنقطة قريبة من مكانك.</li>
+    <li><strong>عند اقتراح خط:</strong> النقاط التي تضعها لكل مرحلة — أين تركب، وأين تنزل، وأي نقاط على الطريق — تُرسل إلينا كإحداثيات اخترتها بنفسك.</li>
+    <li><strong>عند اقتراح مكان ناقص:</strong> النقطة التي تحددها تُرسل إلينا بدقة ودون تقريب. والخريطة تبدأ من موقعك أنت إن كنت قد سمحت بذلك، فإن لم تحرّك المؤشر فأنت ترسل مكانك.</li>
+    <li><strong>بحث يبدأ من موقعك:</strong> لا تُرسل إحداثياتك. يُرسل بدلًا منها اسم أقرب محطة طابقناها والمسافة بينك وبينها بالمتر — مسافة إلى نقطة معروفة، لا موقعك. هذا ما يعنيه التطبيق بعبارة «ولا مكانك» في مفتاح «ساعدنا نحسّن سكة»: لا يغادر أي موقع جهازك تلقائيًا.</li>
+    <li><strong>خرائط القاهرة:</strong> مضمّنة داخل التطبيق وتُقرأ من جهازك، فلا يخرج أي طلب من الهاتف لعرضها. خارج تلك المنطقة تُحمّل الخرائط من خوادم OpenFreeMap، فيصلها عنوان IP الخاص بك والمنطقة التي تشاهدها، ولا شيء غير ذلك. ويحدّث التطبيق مرة أسبوعيًا ملف فهرس صغيرًا للخرائط من OpenFreeMap، ولا يحمل هذا الطلب سوى عنوان IP.</li>
+    <li><strong>زر «الاتجاهات»:</strong> يفتح تطبيق الخرائط على جهازك ويمرّر له <em>الوجهة فقط</em> — سكة لا يرسل نقطة البداية. تطبيق الخرائط بعدها يستخدم موقعك بصلاحياته الخاصة.</li>
+    <li><strong>لصق رابط خرائط مختصر:</strong> يفتح سكة الرابط ليعرف الوجهة، وهو طلب يصل إلى Google ويحمل عنوان IP الخاص بك.</li>
+  </ul>
+  <p>الأماكن المحفوظة والرحلات الأخيرة تُحفظ على جهازك فقط. اسم المكان المحفوظ لا يغادر الهاتف أبدًا؛ وإن استخدمته في بحث أو اقتراح خط، تُرسل إحداثياته فقط.</p>
+
+  <h2>استخدام التطبيق</h2>
+  <p>نوعان من البيانات يُجمعان تلقائيًا:</p>
+  <ul>
+    <li><strong>عمليات البحث:</strong> محطة البداية والوجهة وعدد النتائج — لمعرفة الأماكن التي لا تغطيها بياناتنا. وإن بدأ البحث من موقعك أو من نقطة على الخريطة، تُرسل أيضًا المسافة بالمتر بين تلك النقطة والمحطة التي طابقناها (انظر «الموقع الجغرافي» أعلاه).</li>
+    <li><strong>الخطوط التي تفتحها:</strong> أي خط فتحت تفاصيله — لمعرفة الخطوط الأكثر استخدامًا.</li>
+  </ul>
+  <p>هذان النوعان فقط يخضعان لمفتاح «ساعدنا نحسّن سكة». يظهر المفتاح عند إعداد التطبيق لأول مرة، ويمكنك تغييره في أي وقت من «الملف» ← «البيانات». المفتاح مُفعّل افتراضيًا، وإيقافه يوقفهما تمامًا. المفتاح لا يتحكم في البلاغات التي ترسلها بنفسك (أدناه)، ولا في الخرائط، ولا في الإشعارات، ولا في الإعلانات.</p>
+
+  <h2>البلاغات التي ترسلها بنفسك</h2>
+  <ul>
+    <li>تقييمك للرحلة (👍 أو 👎 وسبب اختياري)</li>
+    <li>الأسعار التي تُبلغ عنها</li>
+    <li>طلبات إضافة خطوط جديدة — نص تكتبه بنفسك، حتى ٢٨٠ حرفًا</li>
+    <li>بلاغات المحطات: تأكيد الاسم، أو اقتراح اسم صحيح، أو موقع صحيح</li>
+    <li>اقتراحات الخطوط: خط تصفه مرحلةً مرحلة — اسم المركبة كما تكتبه، ونقاط الركوب والنزول وأي نقاط على الطريق (كإحداثيات تضعها على الخريطة)، وملاحظة اختيارية حتى ٢٨٠ حرفًا</li>
+    <li>الأماكن الناقصة: محطة أو مكان تحدده على الخريطة — الاسم الذي تكتبه له، وإحداثياته بدقة، وملاحظة اختيارية حتى ٢٨٠ حرفًا</li>
+  </ul>
+  <div class="note">
+    هذه البلاغات تُرسل عند ضغطك على زر الإرسال، و<strong>لا يتحكم فيها مفتاح «ساعدنا نحسّن سكة»</strong> لأنها اختيارية بطبيعتها. كل بلاغ يحمل معرّف الجهاز المذكور أعلاه.
+  </div>
+  <p>ما تكتبه في طلب خط جديد أو اقتراح خط يصلنا كما هو — لا تكتب فيه ما لا ترغب في مشاركته.</p>
+  <p>كل ما يُرسل من التطبيق يُكتب فقط: لا يستطيع أي تطبيق، بما فيه نسختك، قراءته مرة أخرى.</p>
+  <p><strong>الأماكن الناقصة.</strong> في خريطة اختيار الموقع زر «ضيف محطة للمراجعة»، يفتح شاشة تحدد فيها المكان وتكتب الاسم الذي يسمّيه به الناس؛ ولا يُرسل شيء حتى تضغط «ابعت للكل» في تلك الشاشة. ما يصلنا هو هذا الاسم، والإحداثيات التي حددتها بدقة ودون تقريب، وملاحظة اختيارية حتى ٢٨٠ حرفًا، ومعرّف الجهاز ونظام التشغيل ورقم إصدار التطبيق ووقت الإرسال — كما في أي بلاغ آخر. ولا يتحكم مفتاح «ساعدنا نحسّن سكة» في هذا. نراجع كل اقتراح يدويًا، وإن كان صحيحًا أضفنا الاسم إلى بيانات المواصلات في سكة، فيظهر في البحث لكل المستخدمين — والشاشة تنبّهك إلى ذلك قبل الإرسال، وتطلب منك الاسم الذي يعرفه الناس جميعًا لا اسمك أنت. ولا توجد طريقة داخل التطبيق لتعديل اقتراح أرسلته أو سحبه؛ وطلب الحذف (أدناه) يحذف ما أرسلته، أما الاسم الذي أُضيف بالفعل إلى بيانات المواصلات فيبقى جزءًا من تلك البيانات، غير مرتبط بمعرّف جهازك.</p>
+
+  <h2>معلومات تقنية</h2>
+  <p>مع كل ما يُرسل — بلاغًا كان أو بيانات استخدام — يُرسل نظام التشغيل (أندرويد أو iOS) ووقت الإرسال، ومع البلاغات وعمليات البحث رقم إصدار التطبيق أيضًا.</p>
+
+  <h2>لماذا نجمع هذه البيانات</h2>
+  <ul>
+    <li><strong>تشغيل التطبيق:</strong> إيجاد الرحلات وعرض المحطات ومنع تكرار البلاغات.</li>
+    <li><strong>تحسين البيانات:</strong> شبكة المواصلات في القاهرة — خاصة الميكروباص — غير موثقة رسميًا. بلاغاتك هي ما يجعلها أدق.</li>
+  </ul>
+  <p>لا نبيع بياناتك، ولا نستخدمها لتتبعك عبر تطبيقات أخرى.</p>
+
+  <h2>الإعلانات</h2>
+  <p>على أجهزة Android، يحتوي سكة على مكتبة إعلانات Google (Google Mobile Ads)، وتبدأ جزئيًا مع تشغيل التطبيق. التطبيق يطلب صلاحية قراءة <strong>معرّف الإعلانات</strong> الخاص بجهازك — وهو معرّف على مستوى النظام، مختلف عن الرقم العشوائي الذي ينشئه سكة، ويمكنك إعادة تعيينه أو تقييده من إعدادات جهازك. عند عرض إعلان، تجمع Google هذا المعرّف وبيانات عن الإعلان وفقًا لسياسة خصوصيتها. مفتاح «ساعدنا نحسّن سكة» لا يتحكم في هذا.</p>
+  <p>على أجهزة iPhone، يطلب تطبيق سكة إذن «شفافية تتبّع التطبيقات» (App Tracking Transparency) من Apple قبل طلب أي إعلان، ولا يظهر هذا الطلب إلا في شاشة ستعرض إعلانًا. إذا سمحت بذلك، يجوز لمكتبة إعلانات Google استخدام معرّف الإعلانات الخاص بجهازك (IDFA) لعرض إعلانات أكثر ملاءمة لك. وإذا رفضت، فلن يكون هذا المعرّف متاحًا لتطبيق سكة ولا لـ Google، ولن تعتمد الإعلانات المعروضة عليه. ويمكنك تغيير هذا الاختيار في أي وقت من الإعدادات › الخصوصية والأمان › التتبّع.</p>
+  <div class="note">
+    <strong>حاليًا لا يعرض سكة أي إعلانات.</strong> المكتبة موجودة استعدادًا لتفعيلها لاحقًا، وستُحدَّث هذه الصفحة عند بدء عرضها فعليًا.
+  </div>
+
+  <h2>الجهات الخارجية</h2>
+  <ul>
+    <li><strong>Google Firebase</strong> — يخزّن ما يرسله التطبيق ويوصّل تحديثات بيانات المواصلات، ويعالجها نيابةً عنا.</li>
+    <li><strong>Google Mobile Ads</strong> — كما هو موضّح أعلاه. هذه هي الجهة الوحيدة التي نشارك معها بيانات لأغراضها الخاصة.</li>
+    <li><strong>OpenFreeMap</strong> — خرائط المناطق خارج القاهرة، وملف فهرس صغير يُحدَّث أسبوعيًا. خرائط القاهرة مضمّنة في التطبيق.</li>
+    <li><strong>Google Maps</strong> — عند الضغط على «الاتجاهات» أو لصق رابط مختصر.</li>
+    <li><strong>إشعارات Firebase</strong> — لإرسال تنبيهات عامة لكل المستخدمين. ليعمل ذلك، تحتفظ Google برمز إشعارات لجهازك على خوادمها، كما تفعل مع أي تطبيق يستخدم خدمتها؛ سكة لا يخزّن هذا الرمز، ويشترك كل جهاز في قناة واحدة مشتركة، ولا يملك التطبيق وسيلة لإرسال إشعار لشخص بعينه. تذكير «هل وصلت؟» بعد رحلة يُجدوَل على جهازك نفسه ولا يمر بأي خادم.</li>
+  </ul>
+
+  <h2>مدة الاحتفاظ بالبيانات</h2>
+  <p>نحتفظ بالبلاغات ما دامت مفيدة لتحسين بيانات المواصلات. لا يوجد حاليًا حذف تلقائي.</p>
+  <p>لطلب حذف بياناتك، راسلنا على <a href="mailto:sekkaproj@gmail.com">sekkaproj@gmail.com</a> وأرفق معرّف جهازك من صفحة «عن التطبيق» — بدونه لا يمكننا معرفة أي البلاغات لك.</p>
+
+  <h2>الأطفال</h2>
+  <p>سكة غير موجّه للأطفال دون سن ١٣ عامًا، ولا نجمع بياناتهم عن قصد.</p>
+
+  <h2>تغييرات على هذه السياسة</h2>
+  <p>عند تغيير ما نجمعه أو سبب جمعه، نُحدّث هذه الصفحة ونغيّر تاريخ آخر تحديث أعلاها.</p>
+
+  <h2>للتواصل</h2>
+  <p>لأي سؤال عن خصوصيتك أو بياناتك: <a href="mailto:sekkaproj@gmail.com">sekkaproj@gmail.com</a></p>
+</main>
+
+<main id="en" hidden dir="ltr">
+  <p>Sekka helps you get around Cairo by public transport. This page explains what the app collects, why, and who it goes to.</p>
+  <p>Sekka has no accounts. We never ask for your name, email address, or phone number.</p>
+
+  <h2>Your device identifier</h2>
+  <p>The first time the app sends anything — a search with the <em>Help improve Sekka</em> switch on, or a report you send yourself — it generates a random number (a UUID), stores it on your device, and sends it with everything it sends after that, so we can tell what came from the same device. It is never created before then: a device that has sent nothing has no identifier. It is not linked to you, and we cannot use it to identify you.</p>
+  <p>You can see it in the app under Profile → About Sekka, and tap to copy it. To reset it, clear the app's data in your device settings — a new one is created the next time the app sends something. Uninstalling and reinstalling the app gives you a new one. Restoring your whole phone from a backup, or moving to a new phone with a device-to-device transfer tool, may carry it over.</p>
+
+  <h2>Location</h2>
+  <p>If you grant location permission, your location is used on your device to find the nearest stop as a starting point. It is optional — you can search for a stop or pick one on the map instead.</p>
+  <p>Your location reaches others in these cases:</p>
+  <ul>
+    <li><strong>Correcting a stop's position:</strong> the point you pick on the map is sent to us. The map opens at your current location if you have allowed that, so if you don't move it, the point is near where you are.</li>
+    <li><strong>Suggesting a route:</strong> the points you place for each leg — where you board, where you get off, and any points along the way — are sent to us as coordinates you chose.</li>
+    <li><strong>Suggesting a place we're missing:</strong> the exact point you mark is sent to us, unrounded. The map opens at your own position when you have allowed location, so a crosshair you don't move sends where you are.</li>
+    <li><strong>A search started from your location:</strong> your coordinates are not sent. What is sent is the nearest stop we matched and how far you were from it, in metres — a distance to a known point, not your position. This is what the app means by "no location" on the <em>Help improve Sekka</em> switch: no position ever leaves your phone automatically.</li>
+    <li><strong>Maps of Cairo:</strong> built into the app and read from your device, so no request leaves the phone to show them. Outside that area, map tiles load from OpenFreeMap's servers, which receive your IP address and the map area being viewed, and nothing else. Once a week the app also refreshes a small map index file from OpenFreeMap; that request carries only your IP address.</li>
+    <li><strong>The Directions button:</strong> opens whichever maps app is on your device and passes it <em>the destination only</em> — Sekka does not send your starting point. That app then uses your location under its own permissions.</li>
+    <li><strong>Pasting a shortened maps link:</strong> Sekka opens the link to find the destination, and that request reaches Google carrying your IP address.</li>
+  </ul>
+  <p>Saved places and recent trips are kept on your device only. A saved place's name never leaves the phone; if you use one in a search or a route suggestion, only its coordinates travel.</p>
+
+  <h2>How you use the app</h2>
+  <p>Two things are collected automatically:</p>
+  <ul>
+    <li><strong>Searches:</strong> your start and destination stops and how many results came back — this shows us where our data has gaps. If a search started from your location or a point on the map, the distance in metres between that point and the stop we matched is sent too (see Location above).</li>
+    <li><strong>Routes you open:</strong> which route's details you opened — this shows us which routes get used most.</li>
+  </ul>
+  <p>These two, and only these two, are controlled by the <em>Help improve Sekka</em> switch. It is shown when you first set up the app, and you can change it any time under Profile → Data. It is on by default, and turning it off stops both completely. It does not control the reports you send yourself (below), the map, notifications, or ads.</p>
+
+  <h2>Reports you send yourself</h2>
+  <ul>
+    <li>Journey feedback (👍 or 👎 with an optional reason)</li>
+    <li>Fares you report</li>
+    <li>Requests for routes we're missing — text you write, up to 280 characters</li>
+    <li>Stop reports: confirming a name, suggesting a corrected name, or a corrected position</li>
+    <li>Route suggestions: a route you describe leg by leg — the vehicle's name as you write it, the points where you board and get off and any points along the way (as coordinates you place on the map), and an optional note up to 280 characters</li>
+    <li>Missing places: a stop or place you mark on the map — the name you type for it, its exact coordinates, and an optional note up to 280 characters</li>
+  </ul>
+  <div class="note">
+    These are sent when you tap submit, and <strong>the <em>Help improve Sekka</em> switch does not control them</strong>, because sending them is already a choice. Each one carries the device identifier described above.
+  </div>
+  <p>Whatever you type into a route request or a route suggestion reaches us as written — don't put anything in it you'd rather not share.</p>
+  <p>Everything the app sends is write-only: no app, including your own copy, can read it back.</p>
+  <p><strong>Places we're missing.</strong> The map picker has an <em>Add stop for review</em> button. It opens a screen where you mark the spot and type the name people call it; nothing is sent until you tap <em>Send for everyone</em> there. What reaches us is that name, the exact coordinates you marked — not rounded — an optional note of up to 280 characters, and the same device identifier, platform, app version and time that every other report carries. The <em>Help improve Sekka</em> switch does not control it. We check each one by hand, and if it is right we add the name to Sekka's transit data, where it appears in search for every rider — the screen says so before you send, and asks for the name everyone uses rather than your own. There is no way to edit or withdraw a suggestion inside Sekka; a deletion request (below) removes what you sent, but a name already added to the transit data stays there as part of that data, no longer attached to your device identifier.</p>
+
+  <h2>Technical details</h2>
+  <p>Everything sent — reports and usage data alike — includes your platform (Android or iOS) and the time it was sent; reports and searches also include the app version.</p>
+
+  <h2>Why we collect it</h2>
+  <ul>
+    <li><strong>To run the app:</strong> finding journeys, showing stops, and keeping duplicate reports out.</li>
+    <li><strong>To improve the data:</strong> Cairo's transport network — especially the microbus routes — has no official documentation. Your reports are what make it more accurate.</li>
+  </ul>
+  <p>We do not sell your data, and we do not use it to track you across other apps.</p>
+
+  <h2>Advertising</h2>
+  <p>On Android devices, Sekka includes the Google Mobile Ads SDK, part of which starts with the app. The app requests permission to read your device's <strong>advertising ID</strong> — a system-level identifier, separate from the random number Sekka generates, which you can reset or limit in your device settings. When an ad is shown, Google collects that ID and data about the ad under its own privacy policy. The <em>Help improve Sekka</em> switch does not control this.</p>
+  <p>On iPhone, before Sekka requests an ad, it asks for Apple's App Tracking Transparency permission, and only on a screen that would show one. If you allow it, Google Mobile Ads may use your device's advertising identifier (IDFA) to show more relevant ads. If you decline, that identifier is not available to Sekka or to Google, and any ads shown are not based on it. You can change this at any time in Settings › Privacy & Security › Tracking.</p>
+  <div class="note">
+    <strong>Sekka currently shows no ads.</strong> The library is present so ads can be enabled later, and this page will be updated when ads actually start showing.
+  </div>
+
+  <h2>Third parties</h2>
+  <ul>
+    <li><strong>Google Firebase</strong> — stores what the app sends and delivers transit data updates, processing them on our behalf.</li>
+    <li><strong>Google Mobile Ads</strong> — as described above. This is the only party we share data with for their own purposes.</li>
+    <li><strong>OpenFreeMap</strong> — map tiles outside Cairo, and a small index file refreshed weekly. Cairo's maps are built into the app.</li>
+    <li><strong>Google Maps</strong> — when you tap Directions or paste a shortened link.</li>
+    <li><strong>Firebase Cloud Messaging</strong> — sends announcements to all users. To do that, Google keeps a push token for your device on its servers, as it does for any app that uses the service; Sekka never stores that token, every device subscribes to one shared channel, and the app has no way to message one person. The "did you make it?" reminder after a trip is scheduled on your device itself and passes through no server.</li>
+  </ul>
+
+  <h2>How long we keep it</h2>
+  <p>We keep reports for as long as they are useful for improving the transit data. There is currently no automatic deletion.</p>
+  <p>To request deletion, email <a href="mailto:sekkaproj@gmail.com">sekkaproj@gmail.com</a> and include your device identifier from the About screen — without it we cannot tell which reports are yours.</p>
+
+  <h2>Children</h2>
+  <p>Sekka is not directed at children under 13, and we do not knowingly collect their data.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If what we collect or why changes, we update this page and change the date at the top.</p>
+
+  <h2>Contact</h2>
+  <p>Any question about your privacy or your data: <a href="mailto:sekkaproj@gmail.com">sekkaproj@gmail.com</a></p>
+</main>
+</div>
+
+<footer>
+  <div class="foot-grid">
+    <div class="wordmark" style="font-size:1.1rem;">
+      <img src="../assets/icon.png" alt="Sekka" style="width:28px;height:28px;">
+      <span id="foot-brand">سكة</span>
+    </div>
+    <div class="foot-links">
+      <a href="../" id="foot-home">الرئيسية</a>
+      <a href="../support/" id="foot-support">الدعم</a>
+      <a href="mailto:sekkaproj@gmail.com">sekkaproj@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ar=document.getElementById('ar'),en=document.getElementById('en'),
+      bAr=document.getElementById('btn-ar'),bEn=document.getElementById('btn-en'),
+      btnTop=document.getElementById('btn-lang-top'),
+      brand=document.getElementById('brand'),sub=document.getElementById('subtitle'),
+      meta=document.getElementById('meta'),
+      body=document.body,html=document.documentElement;
+  var navBrand=document.getElementById('nav-brand'),navHome=document.getElementById('nav-home'),
+      navSupport=document.getElementById('nav-support'),footBrand=document.getElementById('foot-brand'),
+      footHome=document.getElementById('foot-home'),footSupport=document.getElementById('foot-support');
+  var t={
+    ar:{dir:'rtl',lang:'ar',brand:'سكة — سياسة الخصوصية',sub:'تطبيق المواصلات العامة في القاهرة',
+        meta:'آخر تحديث: ٢٢ سبتمبر ٢٠٢٦',navBrand:'سكة',navHome:'الرئيسية',navSupport:'الدعم',
+        footBrand:'سكة',footHome:'الرئيسية',footSupport:'الدعم',btnLabel:'English'},
+    en:{dir:'ltr',lang:'en',brand:'Sekka — Privacy Policy',sub:'The Cairo public transport app',
+        meta:'Last updated: 22 September 2026',navBrand:'Sekka',navHome:'Home',navSupport:'Support',
+        footBrand:'Sekka',footHome:'Home',footSupport:'Support',btnLabel:'عربي'}
+  };
+  function show(l){
+    var c=t[l];
+    html.lang=c.lang; body.dir=c.dir;
+    brand.textContent=c.brand; sub.textContent=c.sub; meta.textContent=c.meta;
+    ar.hidden=(l!=='ar'); en.hidden=(l!=='en');
+    bAr.setAttribute('aria-pressed',String(l==='ar'));
+    bEn.setAttribute('aria-pressed',String(l==='en'));
+    navBrand.textContent=c.navBrand; navHome.textContent=c.navHome; navSupport.textContent=c.navSupport;
+    footBrand.textContent=c.footBrand; footHome.textContent=c.footHome; footSupport.textContent=c.footSupport;
+    btnTop.textContent=c.btnLabel;
+    try{ localStorage.setItem('sekka-lang', l); }catch(e){}
+  }
+  bAr.addEventListener('click',function(){show('ar')});
+  bEn.addEventListener('click',function(){show('en')});
+  btnTop.addEventListener('click',function(){show(html.lang==='ar' ? 'en' : 'ar')});
+  var initial='ar';
+  try{
+    var saved=localStorage.getItem('sekka-lang');
+    if(saved) initial=saved;
+    else if((navigator.language||'').slice(0,2)!=='ar') initial='en';
+  }catch(e){
+    if((navigator.language||'').slice(0,2)!=='ar') initial='en';
+  }
+  show(initial);
+})();
+</script>
+</body>
+</html>
