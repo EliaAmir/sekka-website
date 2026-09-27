@@ -143,7 +143,7 @@ footer{padding-block:40px 40px;border-top:1px solid var(--rule);margin-top:20px;
   <div class="rails" aria-hidden="true"><i></i><i></i><i></i></div>
   <h1 class="brand" id="brand">سكة — سياسة الخصوصية</h1>
   <p class="sub" id="subtitle">تطبيق المواصلات العامة في القاهرة</p>
-  <p class="meta" id="meta">آخر تحديث: ٢٦ سبتمبر ٢٠٢٦</p>
+  <p class="meta" id="meta">آخر تحديث: ٢٧ سبتمبر ٢٠٢٦</p>
   <div class="toggle">
     <button type="button" id="btn-ar" aria-pressed="true">العربية</button>
     <button type="button" id="btn-en" aria-pressed="false">English</button>
@@ -169,7 +169,7 @@ footer{padding-block:40px 40px;border-top:1px solid var(--rule);margin-top:20px;
     <li><strong>خرائط القاهرة:</strong> مضمّنة داخل التطبيق وتُقرأ من جهازك، فلا يخرج أي طلب من الهاتف لعرضها. خارج تلك المنطقة تُحمّل الخرائط من خوادم OpenFreeMap، فيصلها عنوان IP الخاص بك والمنطقة التي تشاهدها، ولا شيء غير ذلك. ويحدّث التطبيق مرة أسبوعيًا ملف فهرس صغيرًا للخرائط من OpenFreeMap، ولا يحمل هذا الطلب سوى عنوان IP.</li>
     <li><strong>تحديثات بيانات المواصلات:</strong> يتحقق التطبيق من وجود تحديثات للمحطات والأماكن وأسماء الخطوط، ويحمّلها من data.sekka-eg.com. هذا طلب ويب عادي لا يحمل سوى عنوان IP — لا موقعك ولا معرّف جهازك.</li>
     <li><strong>زر «الاتجاهات»:</strong> يفتح تطبيق الخرائط على جهازك ويمرّر له <em>الوجهة فقط</em> — سكة لا يرسل نقطة البداية. تطبيق الخرائط بعدها يستخدم موقعك بصلاحياته الخاصة.</li>
-    <li><strong>لصق رابط خرائط مختصر:</strong> يفتح سكة الرابط ليعرف الوجهة، وهو طلب يصل إلى Google ويحمل عنوان IP الخاص بك.</li>
+    <li><strong>لصق رابط خرائط مختصر أو مشاركته مع سكة:</strong> يفتح سكة الرابط ليعرف الوجهة، وهو طلب يصل إلى Google ويحمل عنوان IP الخاص بك.</li>
   </ul>
   <p>الأماكن المحفوظة والرحلات الأخيرة تُحفظ على جهازك فقط. اسم المكان المحفوظ لا يغادر الهاتف أبدًا؛ وإن استخدمته في بحث أو اقتراح خط، تُرسل إحداثياته فقط.</p>
 
@@ -220,7 +220,7 @@ footer{padding-block:40px 40px;border-top:1px solid var(--rule);margin-top:20px;
     <li><strong>Cloudflare</strong> — من الإصدار 1.0.11، يستضيف ملفات بيانات المواصلات (data.sekka-eg.com) التي يتحقق منها التطبيق ويحمّلها. عند ذلك يصل إلى Cloudflare عنوان IP الخاص بهاتفك، كما يحدث مع أي موقع إلكتروني؛ ولا يُرسل إليه أي حساب أو بيانات شخصية.</li>
     <li><strong>Google Mobile Ads</strong> — كما هو موضّح أعلاه. هذه هي الجهة الوحيدة التي نشارك معها بيانات لأغراضها الخاصة.</li>
     <li><strong>OpenFreeMap</strong> — خرائط المناطق خارج القاهرة، وملف فهرس صغير يُحدَّث أسبوعيًا. خرائط القاهرة مضمّنة في التطبيق.</li>
-    <li><strong>Google Maps</strong> — عند الضغط على «الاتجاهات» أو لصق رابط مختصر.</li>
+    <li><strong>Google Maps</strong> — عند الضغط على «الاتجاهات» أو لصق رابط مختصر أو مشاركته مع سكة.</li>
     <li><strong>إشعارات Firebase</strong> — لإرسال تنبيهات عامة لكل المستخدمين. ليعمل ذلك، تحتفظ Google برمز إشعارات لجهازك على خوادمها، كما تفعل مع أي تطبيق يستخدم خدمتها؛ سكة لا يخزّن هذا الرمز، ويشترك كل جهاز في قناة واحدة مشتركة، ولا يملك التطبيق وسيلة لإرسال إشعار لشخص بعينه. تذكير «هل وصلت؟» بعد رحلة يُجدوَل على جهازك نفسه ولا يمر بأي خادم.</li>
   </ul>
 
@@ -257,7 +257,7 @@ footer{padding-block:40px 40px;border-top:1px solid var(--rule);margin-top:20px;
     <li><strong>Maps of Cairo:</strong> built into the app and read from your device, so no request leaves the phone to show them. Outside that area, map tiles load from OpenFreeMap's servers, which receive your IP address and the map area being viewed, and nothing else. Once a week the app also refreshes a small map index file from OpenFreeMap; that request carries only your IP address.</li>
     <li><strong>Transit data updates:</strong> the app checks for and downloads updates to stops, places and route names from data.sekka-eg.com. It is an ordinary web request carrying only your IP address — not your location, and not your device identifier.</li>
     <li><strong>The Directions button:</strong> opens whichever maps app is on your device and passes it <em>the destination only</em> — Sekka does not send your starting point. That app then uses your location under its own permissions.</li>
-    <li><strong>Pasting a shortened maps link:</strong> Sekka opens the link to find the destination, and that request reaches Google carrying your IP address.</li>
+    <li><strong>A shortened maps link pasted or shared into Sekka:</strong> Sekka opens the link to find the destination, and that request reaches Google carrying your IP address.</li>
   </ul>
   <p>Saved places and recent trips are kept on your device only. A saved place's name never leaves the phone; if you use one in a search or a route suggestion, only its coordinates travel.</p>
 
@@ -308,7 +308,7 @@ footer{padding-block:40px 40px;border-top:1px solid var(--rule);margin-top:20px;
     <li><strong>Cloudflare</strong> — from version 1.0.11, serves the transit data files (data.sekka-eg.com) the app checks for and downloads. Like any website, it sees your phone's IP address when that happens; no account or personal data is sent to it.</li>
     <li><strong>Google Mobile Ads</strong> — as described above. This is the only party we share data with for their own purposes.</li>
     <li><strong>OpenFreeMap</strong> — map tiles outside Cairo, and a small index file refreshed weekly. Cairo's maps are built into the app.</li>
-    <li><strong>Google Maps</strong> — when you tap Directions or paste a shortened link.</li>
+    <li><strong>Google Maps</strong> — when you tap Directions, or paste or share a shortened link into Sekka.</li>
     <li><strong>Firebase Cloud Messaging</strong> — sends announcements to all users. To do that, Google keeps a push token for your device on its servers, as it does for any app that uses the service; Sekka never stores that token, every device subscribes to one shared channel, and the app has no way to message one person. The "did you make it?" reminder after a trip is scheduled on your device itself and passes through no server.</li>
   </ul>
 
@@ -354,10 +354,10 @@ footer{padding-block:40px 40px;border-top:1px solid var(--rule);margin-top:20px;
       footHome=document.getElementById('foot-home'),footSupport=document.getElementById('foot-support');
   var t={
     ar:{dir:'rtl',lang:'ar',brand:'سكة — سياسة الخصوصية',sub:'تطبيق المواصلات العامة في القاهرة',
-        meta:'آخر تحديث: ٢٦ سبتمبر ٢٠٢٦',navBrand:'سكة',navHome:'الرئيسية',navSupport:'الدعم',
+        meta:'آخر تحديث: ٢٧ سبتمبر ٢٠٢٦',navBrand:'سكة',navHome:'الرئيسية',navSupport:'الدعم',
         footBrand:'سكة',footHome:'الرئيسية',footSupport:'الدعم',btnLabel:'English'},
     en:{dir:'ltr',lang:'en',brand:'Sekka — Privacy Policy',sub:'The Cairo public transport app',
-        meta:'Last updated: 26 September 2026',navBrand:'Sekka',navHome:'Home',navSupport:'Support',
+        meta:'Last updated: 27 September 2026',navBrand:'Sekka',navHome:'Home',navSupport:'Support',
         footBrand:'Sekka',footHome:'Home',footSupport:'Support',btnLabel:'عربي'}
   };
   function show(l){
