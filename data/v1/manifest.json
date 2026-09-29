@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "updated_at": "2026-09-28T20:30:55.720Z",
+  "graph": {
+    "version": "6.2.0-tfc-enriched",
+    "file": "v1/sekka_graph/6.2.0-tfc-enriched.sek",
+    "bytes": 1045523,
+    "sha256": "54b5f04a61efa559fd302f24a36e52f48c9b39270e8a34789faad75b72c8cd03"
+  },
+  "places": {
+    "version": "c69e7fd6be127bb6",
+    "file": "v1/sekka_places/c69e7fd6be127bb6.sek",
+    "bytes": 481685,
+    "sha256": "c69e7fd6be127bb63f75ad1a983e1fc2c827b80ecbb984e6296fdf4ca58eb69f"
+  },
+  "route_names": {
+    "version": "eefced840398232b",
+    "file": "v1/sekka_route_names/eefced840398232b.sek",
+    "bytes": 57704,
+    "sha256": "eefced840398232b0131de0771ee6ce5db7900b99ebf8d2bec5d54d0e9f48364"
+  },
+  "browse": {
+    "version": "534c5fe665600a90",
+    "file": "v1/sekka_browse/534c5fe665600a90.sek",
+    "bytes": 227738,
+    "sha256": "534c5fe665600a90755d1c06a019afdb377082de10add928068d01fb46e535c3"
+  },
+  "app_update": {
+    "recommend_below_build": 11,
+    "message_ar": "فيه نسخة جديدة من سكة. حدّثها وقت ما يناسبك.",
+    "message_en": "A new version of Sekka is out. Update when it suits you.",
+    "remind_after_days": 7
+  },
+  "routing": {
+    "access_ceiling_m": 2000
+  }
+}
