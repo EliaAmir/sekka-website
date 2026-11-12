@@ -1,5 +1,42 @@
+# sekka-eg.com
+# Search engines may index the public pages. Sekka's data and the site's API are not for crawling,
+# and AI / scraper crawlers are asked to stay out entirely (see the Terms of Use, https://sekka-eg.com/terms/).
+# robots.txt is a request that well-behaved crawlers honour; it does not block anyone.
+
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /data
+Disallow: /data/
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
 
 Sitemap: https://sekka-eg.com/sitemap.xml
