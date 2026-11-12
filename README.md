@@ -5,29 +5,26 @@ https://sekka-eg.com (GitHub Pages, custom domain via `CNAME`).
 
 - `index.html` — landing page
 - `privacy/index.html` — privacy policy (canonical URL: https://sekka-eg.com/privacy/)
+- `terms/index.html` — terms of use (https://sekka-eg.com/terms/)
 - `support/index.html` — support page (https://sekka-eg.com/support/)
 
-## Keep in sync
+## Where the pages come from
 
-The privacy policy exists in two places:
+These files are the built output of the `sekka-web` repo (`npm run build`, then
+copy `dist/` here). Edit the text there, not here: the privacy policy is
+`src/legal/privacy.ts` and the terms of use are `src/legal/terms.ts`.
 
-- `privacy/index.html` in this repo (canonical URL, linked from the app and
-  the Play listing going forward)
-- `index.html` in the `sekka-privacy` repo (legacy URL,
-  `https://eliaamir.github.io/sekka-privacy/`, kept alive because released
-  app versions and the Play listing still link there)
+## Privacy policy check
 
-Any change to the policy text — what's collected, why, retention, contact —
-**must land in both pages in the same sitting**, with the same "last
-updated" date. Never edit one without the other.
-
-After editing either page, run the sync checker from this repo. It extracts
-the visible text of the `<main id="ar">` / `<main id="en">` blocks from both
-pages and fails if they differ:
+The policy has one copy, `privacy/index.html`. The old address
+(`https://eliaamir.github.io/sekka-privacy/`, repo `sekka-privacy`) is retired
+and only forwards here, for app versions 1.0.10 and older.
 
 ```
 python3 scripts/check_privacy_sync.py
 ```
 
-By default it compares `../sekka-privacy/index.html` against
-`privacy/index.html`; pass explicit paths if your checkout layout differs.
+By default it reads `../sekka-privacy/index.html` and `privacy/index.html`. It
+passes when the old page still forwards to https://sekka-eg.com/privacy/ and
+this page has both language blocks. Given two pages that both carry the text,
+it compares them word for word.

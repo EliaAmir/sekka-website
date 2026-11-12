@@ -7,6 +7,11 @@ from the old page (eliaamir.github.io/sekka-privacy/, source at
 repo), strips markup, normalizes whitespace, and diffs each language block.
 Exits non-zero and prints a diff if anything differs.
 
+Since the old address was retired (sekka-privacy d7cc7a3), its index.html holds
+no policy text and only forwards to https://sekka-eg.com/privacy/. In that case
+the check passes when the old page still forwards there (canonical link, meta
+refresh and script) and the new page has both language blocks.
+
 The old page carries two small additions the new page must NOT carry: the
 canonical link and the "also published at sekka-eg.com/privacy" banner line.
 Those live outside the <main id="..."> blocks, so they never enter this
@@ -28,6 +33,13 @@ MAIN_RE = re.compile(
     r'<main\s+id="(ar|en)"[^>]*>(.*?)</main>', re.DOTALL
 )
 TAG_RE = re.compile(r"<[^>]+>")
+CANONICAL = "https://sekka-eg.com/privacy/"
+# what the retired old page must contain to count as forwarding to the canonical page
+FORWARD_MARKS = (
+    f'<link rel="canonical" href="{CANONICAL}">',
+    f'url={CANONICAL}"',
+    f"location.replace('{CANONICAL}'",
+)
 WS_RE = re.compile(r"\s+")
 
 
@@ -54,8 +66,27 @@ def main():
         print(f"FAIL: new policy not found at {new_path}")
         return 2
 
-    old_blocks = extract_blocks(old_path.read_text(encoding="utf-8"))
+    old_html = old_path.read_text(encoding="utf-8")
+    old_blocks = extract_blocks(old_html)
     new_blocks = extract_blocks(new_path.read_text(encoding="utf-8"))
+
+    # The old address is retired: sekka-privacy/index.html no longer carries the text, it forwards to the canonical page.
+    # Then there is nothing to diff; check instead that it still forwards there and that the new page has both languages.
+    if not old_blocks:
+        missing = [m for m in FORWARD_MARKS if m not in old_html]
+        if missing:
+            print(f"FAIL: {old_path} carries no policy text and does not forward to {CANONICAL}:")
+            for m in missing:
+                print(f"  missing: {m}")
+            return 1
+        empty = [lang for lang in ("ar", "en") if not new_blocks.get(lang)]
+        if empty:
+            print(f"FAIL: {new_path} has no text in <main id=\"{'/'.join(empty)}\">")
+            return 1
+        print(f"OK: {old_path} forwards to {CANONICAL} (canonical, meta refresh and script), so there is no second copy to drift.")
+        for lang in ("ar", "en"):
+            print(f"OK: '{lang}' policy text present in {new_path} ({len(new_blocks[lang])} chars)")
+        return 0
 
     ok = True
     for lang in ("ar", "en"):
